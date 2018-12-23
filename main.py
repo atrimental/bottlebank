@@ -1,5 +1,7 @@
 from flask import Flask
 
+import secrets
+
 import superadmin.views as superadmin_views
 import game.views as game_views
 
@@ -9,11 +11,9 @@ app = Flask(__name__)
 app.register_blueprint(superadmin_views.bp, url_prefix="/superadmin")
 app.register_blueprint(game_views.bp, url_prefix="/game")
 
-@app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
-
+app.config.update(
+    SECRET_KEY=secrets.SECRET_KEY
+)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
