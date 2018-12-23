@@ -20,3 +20,8 @@ class Game():
             'name': self.name,
         })
         client.put(task)
+
+    @classmethod
+    def get(cls, index):
+        entity = client.get(client.key('Game', index))
+        return Game(entity['index'], entity['name'])

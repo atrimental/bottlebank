@@ -1,11 +1,13 @@
 from flask import Flask
 
 import superadmin.views as superadmin_views
+import game.views as game_views
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
 app = Flask(__name__)
 app.register_blueprint(superadmin_views.bp, url_prefix="/superadmin")
+app.register_blueprint(game_views.bp, url_prefix="/game")
 
 @app.route('/')
 def hello():
