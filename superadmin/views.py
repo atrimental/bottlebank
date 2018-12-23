@@ -1,4 +1,5 @@
 from flask import Blueprint
+import models.conn
 
 bp = Blueprint('superadmin', __name__)
 
