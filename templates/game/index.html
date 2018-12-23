@@ -4,4 +4,12 @@
 
 {{game.name}}
 
+<ul>
+    {% for user in game.get_all_users() %}
+      <li>{{user.username}}</li>
+    {% endfor %}
+    </ul>
+    
+
+
 {% endblock %}

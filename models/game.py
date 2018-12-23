@@ -1,5 +1,6 @@
 from models.conn import client
 from google.cloud import datastore
+from models.user import User
 
 
 class Game():
@@ -25,3 +26,8 @@ class Game():
     def get(cls, index):
         entity = client.get(client.key('Game', index))
         return Game(entity['index'], entity['name'])
+
+    def get_all_users(self):
+        ancestor = client.key('Game', self.index)
+        q = client.query(kind='User', ancestor=ancestor)
+        return [User(self, e['username']) for e in q.fetch()]
