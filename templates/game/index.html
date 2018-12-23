@@ -4,11 +4,11 @@
 
 {{game.name}}
 
-<ul>
-    {% for user in game.get_all_users() %}
-      <li>{{user.username}}</li>
-    {% endfor %}
-    </ul>
+{% if user %}
+<p>You are logged in as: {{user.username}}</p>
+{% else %}
+<p>You are not logged in</p>
+{% endif %}
     
 
 
