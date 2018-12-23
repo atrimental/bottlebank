@@ -2,6 +2,10 @@
 
 {% block content %}
 
-  <p class="blue">Test!</p>
+<ul>
+{% for game in games %}
+  <li><a href="/game/{{game.index}}/">{{game.name}}</a></li>
+{% endfor %}
+</ul>
 
 {% endblock %}
